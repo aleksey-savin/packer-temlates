@@ -28,4 +28,3 @@ autoinstall:
         sudo: ALL=(ALL) NOPASSWD:ALL
         shell: /bin/bash
         ssh_authorized_keys:
-          - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCMnCGRT41VKlDHAT7ARTjcvUm7jOeaYPx20/ZAdp2eflc7rAouJxtPyZCP6of4T80SOD4HNaLwrfYytEUxEnA6toKKa6G1y2C8fEilYymYOF1RI1eN1Dr6+++bKyjeupM9mBubJnJAZBkNy+1LNXVj/ELe38pLthC4tdZiwvfJ4Cb4ZV3kNphnLTK6mv4s0jRFl+F6CugcPsD9FkIng6dNIWLgZCCXU4rARqrHKBUKQZx5Kcj1FH9cpLra/7cLf9jZOhFlzU5V5W7E/5zbRPLS8oJ15osxhX1m6bTWbBPG69rg1SroLl6HEusGzrCWurWRUR0bbrSMWLSRZkSK95bnwce1/3NNTxYZKG/mvYLS2VDzpqDgPxd8JIN1k6Mtznr4wJoeiv9nQaylpjP3na/5TMbDMEnWTzTu+NCmZQjNUDQHQDyxJtKQThf2AXZPSPCIs/Hi25YvlbMBmgJnkOCvvUyB+hkc2aal8Dw7dKgFCvvq42jIGaAZSYRIDyDn+EE= aleksey@fedora
