@@ -17,20 +17,19 @@ variable "proxmox_api_token_secret" {
 }
 
 # Resource Definiation for the VM Template
-source "proxmox-iso" "ubuntu-server-jammy" {
+source "proxmox-iso" "ubuntu-jammy-postgrespro-16" {
 
   # Proxmox Connection Settings
   proxmox_url              = "${var.proxmox_api_url}"
-  insecure_skip_tls_verify = true
   username                 = "${var.proxmox_api_token_id}"
   token                    = "${var.proxmox_api_token_secret}"
   # (Optional) Skip TLS Verification
-  # insecure_skip_tls_verify = true
+  insecure_skip_tls_verify = true
 
   # VM General Settings
   node                 = "f1-srv-pve02"
   vm_id                = "9001"
-  vm_name              = "ubuntu-server-jammy"
+  vm_name              = "ubuntu-jammy-postgrespro-16"
   template_description = "Ubuntu Server jammy Image"
 
   # VM OS Settings
@@ -80,8 +79,8 @@ source "proxmox-iso" "ubuntu-server-jammy" {
     "e<wait>",
     "<down><down><down><end>",
     "<bs><bs><bs><bs><wait>",
-    // "autoinstall ds=nocloud-net\\;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ ---<wait>",
-    "autoinstall ds=nocloud-net\\;s=http://172.16.100.3:{{ .HTTPPort }}/ ---<wait>",
+    "autoinstall ds=nocloud-net\\;s=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ ---<wait>",
+    // "autoinstall ds=nocloud-net\\;s=http://172.16.100.3:{{ .HTTPPort }}/ ---<wait>", // ИЗМЕНЯЕМЫЙ ПАРАМЕТР
     "<f10><wait>"
   ]
   boot      = "c"
@@ -103,14 +102,14 @@ source "proxmox-iso" "ubuntu-server-jammy" {
   ssh_private_key_file = "~/.ssh/id_rsa"
 
   # Raise the timeout, when installation takes longer
-  ssh_timeout = "20m"
+  ssh_timeout = "25m"
 }
 
 # Build Definition to create the VM Template
 build {
 
   name    = "ubuntu-jammy-postgrespro-16"
-  sources = ["source.proxmox-iso.ubuntu-server-jammy"]
+  sources = ["source.proxmox-iso.ubuntu-jammy-postgrespro-16"]
 
   # Provisioning the VM Template for Cloud-Init Integration in Proxmox #1
   provisioner "shell" {
